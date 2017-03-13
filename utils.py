@@ -142,22 +142,15 @@ def generate_sentence(model, index_to_word, word_to_index, min_length=5):
     return new_sentence
 
 def generate_sentences(model, n, index_to_word, word_to_index,loss,outfile):
-    score = np.exp(-loss*0.25)
-    print("Loss: %f,Score: %f" % (loss,score))
-    print('\n')
-    with open(outfile,'a+') as f:
-        for i in range(n):
-            print('\n') 
-            sent = None
-            while not sent:
-                sent = generate_sentence(model, index_to_word, word_to_index)
-            print_sentence(sent, index_to_word)
-            s = [index_to_word[x] for x in sent[1:-1]]
+#    with open(outfile,'a+') as f:
+        sent = None
+        while not sent:
+            sent = generate_sentence(model, index_to_word, word_to_index)
+        print_sentence(sent, index_to_word)
+        s = [index_to_word[x] for x in sent[1:-1]]
             
-            f.write('%s|%s\n' % (s,score))
-        
-#def write_data(loss,s,outfile):
-#    with open(outfile,'w') as f: f.write((s,loss))    
+#            f.write('%s|%s\n' % (s))
+            
     
 
 
