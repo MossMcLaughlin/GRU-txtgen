@@ -9,7 +9,7 @@ import numpy as np
 from utils import *
 from datetime import datetime
 from GRU_text_gen import GRUTheano
-#import load_sentenceCorpus as loadS
+
 
 LEARNING_RATE = float(os.environ.get("LEARNING_RATE", "0.002"))
 VOCABULARY_SIZE = int(os.environ.get("VOCABULARY_SIZE", "6000"))
