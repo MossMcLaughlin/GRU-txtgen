@@ -39,18 +39,9 @@ def load_data(filename="data/imdb_Data.txt", vocabulary_size=12000, min_sent_cha
 
         # Filter sentences
         txt = [[s for s in review if len(s) >= min_sent_characters] for review in txt]
-#        txt = [[s for s in article if '###' not in s] for article in txt]
+
 
     # Append SENTENCE_START and SENTENCE_END
-    '''
-    ii = 0
-    for line in txt:
-        jj = 0
-        for sent in line:
-            txt[ii][jj] = '%s %s %s' % (SENTENCE_START_TOKEN,sent,SENTENCE_END_TOKEN)
-            jj += 1
-        ii += 1
-    '''
     txt = [['%s %s %s' % (SENTENCE_START_TOKEN,sent,SENTENCE_END_TOKEN) for sent in article] for article in txt]
 
     print("Parsed %d articles." % (len(txt)))
