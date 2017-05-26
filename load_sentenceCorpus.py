@@ -54,7 +54,6 @@ def load_data(filename="data/sentenceCorpusData.txt", vocabulary_size=8000, min_
     print("Parsed %d articles.\n" % (len(txt)))
 
     # Tokenize utf-8 decoded lines 
-#    tokenized_sentences = [[nltk.word_tokenize(line.decode('utf-8')) for line in article] for article in txt]
     print("Tokenizing sentences...")
     tokenized_sentences = [[nltk.word_tokenize(line.lower()) for line in article] for article in txt]
     
@@ -65,7 +64,6 @@ def load_data(filename="data/sentenceCorpusData.txt", vocabulary_size=8000, min_
 
     # Filter words
     print("Filtering words...")
-    #tokenized_sentences = [[w for w in line if '@' not in w] for line in tokenized_sentences]
     tokenized_sentences = [[w if w.isnumeric()==False else NUM_TOKEN for w in line] for line in tokenized_sentences]
     
     # Count the word frequencies
